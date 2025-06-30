@@ -1,3 +1,4 @@
+
 /* 1. CSS Reset & 變數定義 */
 *,
 *::before,
@@ -183,7 +184,7 @@ footer {
 }
 
 .company-card img {
-  height: 80px;
+  height: 100px;
   margin-bottom: 1rem;
 }
 
@@ -266,3 +267,144 @@ footer {
 .product-card:hover {
   transform: translateY(-5px);
 }
+
+/* 聯絡我們表單 */
+.contact-form {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contact-form h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.required {
+  color: var(--color-accent);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  transition: border-color var(--transition-speed);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.85rem;
+  height: 1em;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.btn-submit {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--color-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.btn-submit:hover {
+  background-color: var(--color-primary);
+}
+
+.form-success {
+  text-align: center;
+  color: #28a745;
+  margin-top: 1rem;
+  font-size: 1rem;
+  height: 1.2em;
+}
+
+/* 官方連結頁 */
+.official-links {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.official-links h2 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.link-item {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 140px;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: transform var(--transition-speed);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.link-item img {
+  height: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.link-item span {
+  display: block;
+  font-size: 0.95rem;
+}
+
+.link-item:hover {
+  transform: translateY(-5px);
+}
+
+/* 3D 悬浮卡片 */
+.company-card, .product-card {
+  perspective: 800px;
+}
+.card-inner {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+.company-card:hover .card-inner,
+.product-card:hover .card-inner {
+  transform: rotateX(6deg) rotateY(-6deg) scale(1.05);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.2);
+}
+

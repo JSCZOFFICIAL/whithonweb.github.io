@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聯絡我們｜白森民主共和國</title>
+  <link rel="alternate" hreflang="zh-TW" href="contact.html" />
+  <link rel="alternate" hreflang="en"     href="en/contact.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="page-transition"></div>
+  <header>
+    <div class="logo"><img src="images/coat_of_arms.png" alt="白森國徽" /></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="country.html">國家介紹</a></li>
+        <li><a href="companies.html">公司介紹</a></li>
+        <li><a href="products.html">產品介紹</a></li>
+        <li><a href="contact.html" class="active">聯絡我們</a></li>
+        <li><a href="links.html">官方連結</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switch">
+      <a href="en/contact.html">English</a>｜<a href="contact.html">繁中</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-form">
+      <h2>聯絡我們</h2>
+      <h2>(擺飾用，無效果)</h2>
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="name">姓名<span class="required">*</span></label>
+          <input type="text" id="name" name="name" required />
+          <small class="error" id="error-name"></small>
+        </div>
+        <div class="form-group">
+          <label for="email">電子郵件<span class="required">*</span></label>
+          <input type="email" id="email" name="email" required />
+          <small class="error" id="error-email"></small>
+        </div>
+        <div class="form-group">
+          <label for="message">訊息內容<span class="required">*</span></label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+          <small class="error" id="error-message"></small>
+        </div>
+        <button type="submit" class="btn-submit">送出</button>
+        <p class="form-success" id="formSuccess"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 白森民主共和國 All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

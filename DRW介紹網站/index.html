@@ -4,22 +4,106 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>白森民主共和國 Official</title>
-  <!-- 多語系標籤 -->
   <link rel="alternate" hreflang="zh-TW" href="index.html" />
-  <link rel="alternate" hreflang="en"     href="en/index.html" />
-
-  <!-- 全局樣式 -->
+  <link rel="alternate" hreflang="en" href="en/index.html" />
   <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans TC', sans-serif; color: #fff; background: #000; }
+    a { text-decoration: none; }
+
+    header {
+      position: fixed; top: 0; width: 100%; padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(0, 0, 0, 0.6); z-index: 20; backdrop-filter: blur(10px);
+    }
+    .logo img {
+      height: 60px;
+      filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.1);
+    }
+    nav ul { display: flex; gap: 1.5rem; list-style: none; }
+    nav a { color: #fff; font-weight: 500; transition: color .3s; }
+    nav a:hover { color: #ffd700; }
+    .lang-switch a { color: #fff; margin-left: 1rem; font-size: .9rem; }
+
+    .hero {
+      position: relative; min-height: 100vh; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 0 1rem;
+    }
+    .hero-bg {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: url('images/whithonflag.jpg') center/cover no-repeat;
+      z-index: 0;
+      filter: brightness(0.55) contrast(1.1);
+    }
+    .hero::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+      z-index: 1;
+    }
+    #particles-js {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2;
+    }
+    .slogan {
+      position: relative; z-index: 3; max-width: 90%;
+    }
+    .slogan h1 {
+      font-size: 4rem; letter-spacing: 5px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    }
+    .slogan p {
+      margin-top: 1rem; font-size: 1.5rem; font-weight: 300; letter-spacing: 2px;
+    }
+
+    .quick-links {
+      display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+      margin-top: -4rem; padding: 2rem; position: relative; z-index: 2;
+    }
+    .card {
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(12px);
+      padding: 1.5rem 2rem; border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .card a {
+      color: #fff; font-size: 1.2rem; font-weight: 600;
+    }
+    .card:hover {
+      transform: translateY(-10px); box-shadow: 0 16px 32px rgba(0,0,0,0.6);
+    }
+
+    footer {
+      text-align: center; padding: 1.5rem; background: rgba(0,0,0,0.5);
+      position: relative; z-index: 2;
+    }
+
+    .typewriter {
+      display: inline-block; border-right: .15em solid #ffd700;
+      overflow: hidden; white-space: nowrap; animation: blink-caret .75s step-end infinite;
+    }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
+
+    @media(max-width:768px) {
+      .slogan h1 { font-size: 3rem; } .slogan p { font-size: 1.1rem; }
+      nav ul { display: none; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-  <header>
-    <!-- Logo 或國徽 / 國旗 -->
+  <header data-aos="fade-down" data-aos-delay="200">
     <div class="logo">
-      <!-- TODO: 替換為您的國徽圖片 -->
       <img src="images/coat_of_arms.png" alt="白森國徽" />
     </div>
-    <!-- 主導航 -->
-    <nav>
+    <nav data-aos="fade-right" data-aos-delay="300">
       <ul>
         <li><a href="index.html">首頁</a></li>
         <li><a href="country.html">國家介紹</a></li>
@@ -29,35 +113,48 @@
         <li><a href="links.html">官方連結</a></li>
       </ul>
     </nav>
-    <!-- 語言切換 -->
-    <div class="lang-switch">
-      <a href="en/index.html">English</a>｜<a href="index.html">繁中</a>
+    <div class="lang-switch" data-aos="fade-left" data-aos-delay="400">
+      <a href="en/index.html">EN</a>｜<a href="index.html">繁</a>
     </div>
   </header>
 
-  <main>
-    <!-- 首頁橫幅 -->
-    <section class="hero">
-      <!-- TODO: 替換為您的國旗背景圖 -->
-      <img src="images/whithonflag.jpg" alt="白森國旗橫幅" />
-      <div class="slogan">
-        <h1>冰雪與榮耀並存，創新與自由共舞</h1>
-      </div>
-    </section>
+  <section class="hero" data-aos="fade-in">
+    <div class="hero-bg"></div>
+    <div id="particles-js"></div>
+    <div class="slogan" data-aos="zoom-in" data-aos-delay="400">
+      <h1 class="typewriter">白森民主共和國</h1>
+      <p>冰雪與榮耀並存，創新與自由共舞</p>
+    </div>
+  </section>
 
-    <!-- 快速導覽 -->
-    <section class="quick-links">
-      <div class="card"><a href="country.html">國家介紹</a></div>
-      <div class="card"><a href="companies.html">公司與產業</a></div>
-      <div class="card"><a href="products.html">特色產品</a></div>
-    </section>
-  </main>
+  <section class="quick-links" data-aos="fade-up" data-aos-delay="300">
+    <div class="card"><a href="country.html">國家介紹</a></div>
+    <div class="card"><a href="companies.html">公司與產業</a></div>
+    <div class="card"><a href="products.html">特色產品</a></div>
+  </section>
 
-  <footer>
+  <footer data-aos="fade-up" data-aos-delay="1000">
     <p>© 2025 白森民主共和國 All rights reserved.</p>
   </footer>
 
-  <!-- 全局腳本 -->
-  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 60 }, color: { value: '#fff' }, shape: { type: 'circle' },
+        opacity: { value: 0.5 }, size: { value: 3 }, move: { direction: 'bottom', speed: 1 }
+      },
+      interactivity: { events: { onhover: { enable: false }, onclick: { enable: false } } }
+    });
+    const el = document.querySelector('.typewriter'), text = el.textContent;
+    el.textContent = ''; let idx = 0;
+    (function type() {
+      if (idx < text.length) {
+        el.textContent += text[idx++];
+        setTimeout(type, 100);
+      }
+    })();
+  </script>
 </body>
 </html>
