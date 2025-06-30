@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>產品介紹｜白森民主共和國</title>
+  <link rel="alternate" hreflang="zh-TW" href="products.html" />
+  <link rel="alternate" hreflang="en"     href="en/products.html" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/coat_of_arms.png" alt="白森國徽" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="country.html">國家介紹</a></li>
+        <li><a href="companies.html">公司介紹</a></li>
+        <li><a href="products.html" class="active">產品介紹</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+        <li><a href="links.html">官方連結</a></li>
+      </ul>
+    </nav>
+    <div class="lang-switch">
+      <a href="en/products.html">English</a>｜<a href="products.html">繁中</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="products">
+      <h2>特色產品</h2>
+
+      <!-- 篩選選單 -->
+      <div class="filter-bar">
+        <label for="companyFilter">依公司篩選：</label>
+        <select id="companyFilter">
+          <option value="all">顯示全部</option>
+          <option value="IMFK">IMFK</option>
+          <option value="X">X</option>
+          <option value="Waith">Waith</option>
+          <option value="PLG">Pro Level Gaming</option>
+          <option value="Whitai">Whitai</option>
+          <option value="Aureventi">Aureventi</option>
+          <option value="Huangyu">凰玉 Huangyu</option>
+          <option value="Ifter">Ifter</option>
+          <option value="Proter">Proter</option>
+          <option value="MagLevion">MagLevion</option>
+        </select>
+      </div>
+
+      <!-- 產品清單 -->
+      <div class="product-list">
+        <!-- 範例卡片結構 -->
+        <div class="product-card" data-company="IMFK">
+          <!-- TODO: 替換為實際產品圖片 -->
+          <img src="images/IMFK_fighter.jpg" alt="IMFK 戰鬥機" />
+          <h3>F-01 戰鬥機</h3>
+          <p>高速多功能隱形戰鬥機。</p>
+        </div>
+        <div class="product-card" data-company="Waith">
+          <img src="images/Waith_maglev.jpg" alt="Waith 磁浮列車" />
+          <h3>MagLev X-200</h3>
+          <p>次世代城市間磁懸浮列車。</p>
+        </div>
+        <!-- TODO: 按公司分類，依序新增各公司產品卡片 -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 白森民主共和國 All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
