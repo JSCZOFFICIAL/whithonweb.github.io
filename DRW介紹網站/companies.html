@@ -2,17 +2,185 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>公司介紹｜白森民主共和國</title>
-  <link rel="alternate" hreflang="zh-TW" href="companies.html" />
-  <link rel="alternate" hreflang="en"     href="en/companies.html" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(135deg, #1b1f27, #131313);
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+      font-size: 1em;
+    }
+    a {
+      color: #00cfff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      text-decoration: underline;
+      color: #00b0e6;
+    }
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+      z-index: 9999;
+    }
+    header.scrolled { background: rgba(0,0,0,0.85); }
+    .logo { margin-bottom: 0.5rem; }
+    .logo img {
+      height: 50px;
+      filter: drop-shadow(0 0 6px rgba(0,196,255,0.9));
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover { transform: scale(1.1); }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      list-style: none;
+      padding: 0.5rem 0;
+      justify-content: center;
+    }
+    nav a {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: #00cfff;
+      transition: width 0.3s ease;
+      margin-top: 3px;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .lang-switch {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .lang-switch a {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lang-switch a:hover { color: #00cfff; }
+
+    main.content {
+      max-width: 1100px;
+      margin: 130px auto 40px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+    }
+    main.content h1 {
+      font-size: 2.8rem;
+      color: #00cfff;
+      text-align: center;
+      text-shadow: 0 0 8px #00cfff;
+      margin-bottom: 1.5rem;
+    }
+    .company-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .company-card {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem 1rem;
+      border-radius: 18px;
+      text-align: center;
+      border: 1px solid #00cfff;
+      box-shadow: 0 0 10px rgba(0,196,255,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .company-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at center, rgba(0,196,255,0.15) 0%, transparent 70%);
+      transform: rotate(25deg);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .company-card:hover::before {
+      opacity: 1;
+    }
+    .company-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 14px 28px rgba(0,196,255,0.5);
+      background: rgba(255,255,255,0.08);
+    }
+    .company-card img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0.8rem;
+      filter: drop-shadow(0 0 6px #00cfff);
+      transition: transform 0.3s ease;
+    }
+    .company-card:hover img {
+      transform: scale(1.15) rotate(3deg);
+    }
+    .company-card h3 {
+      font-size: 1.2rem;
+      color: #00cfff;
+      margin-bottom: 0.5rem;
+    }
+    .company-card p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.85rem;
+      color: #888;
+    }
+    @media (max-width: 768px) {
+      main.content {
+        margin: 140px 1rem 40px;
+        padding: 1rem;
+      }
+      main.content h1 {
+        font-size: 1.8rem;
+        text-shadow: none;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="page-transition"></div>
-  <header>
+  <header id="header">
     <div class="logo">
-      <img src="images/coat_of_arms.png" alt="白森國徽" />
+      <a href="index.html"><img src="images/coat_of_arms.png" alt="白森國徽" /></a>
     </div>
     <nav>
       <ul>
@@ -29,71 +197,79 @@
     </div>
   </header>
 
-  <main>
-    <section class="companies">
-      <h2>我們的核心企業</h2>
-      <div class="company-list">
-        <!-- 以下為範例卡片，請替換 logo.png、company-name、簡介文字 -->
-        </div>
-        <div class="company-card">
-          <img src="images/IMFK_logo.png" alt="IMFK Logo" />
-          <h3>International Military Force Vehicles(IMFK)</h3>
-          <p>專注於航太與先進軍事科技研發。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/X_logo.png" alt="X Logo" />
-          <h3>X</h3>
-          <p>IMFK的旗下公司，專注尖端導彈研發。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/Waith_logo.png" alt="Waith Logo" />
-          <h3>Waith</h3>
-          <p>提供多元電子產品之製造公司。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/PLG_logo.png" alt="PLG Logo" />
-          <h3>Pro Level Gaming(PLG)</h3>
-          <p>Waith旗下公司，專門製作電競類電子產品。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/Whitai_logo.png" alt="Whitai Logo" />
-          <h3>Whitai</h3>
-          <p>專注於交通工具製造。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/Aureventi_logo.png" alt="Aureventi Logo" />
-          <h3>Aureventi</h3>
-          <p>Whitai旗下公司，專門因應賽事研究賽車之製造公司。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/Huangyu_logo.png" alt="Huangyu Logo" />
-          <h3>Huangyu</h3>
-          <p>提供空中載具之製造公司。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/Ifter_logo.png" alt="Ifter Logo" />
-          <h3>Ifter</h3>
-          <p>專門建設建築之製造公司。</p>
-        </div>
-        <div class="company-card">
-          <img src="images/Proter_logo.png" alt="Proter Logo" />
-          <h3>Proter</h3>
-          <p>專門為特定區域防禦製造防護罩之製造公司。</p>
-        </div>
-         <div class="company-card">
-          <img src="images/MagLevion_logo.png" alt="MagLevion Logo" />
-          <h3>MagLevion</h3>
-          <p>專注於磁懸浮技術與製造磁懸浮交通工具。</p>
-        </div>
-        <!-- 公司排版 -->
+  <main class="content" data-aos="fade-up">
+    <h1 data-aos="zoom-in">我們的核心企業</h1>
+    <section class="company-list">
+      <div class="company-card" data-aos="fade-up">
+        <img src="images/IMFK_logo.png" alt="IMFK Logo" />
+        <h3>International Military Force Vehicles(IMFK)</h3>
+        <p>專注於航太與先進軍事科技研發。</p>
       </div>
-    </section>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="50">
+        <img src="images/X_logo.png" alt="X Logo" />
+        <h3>X</h3>
+        <p>IMFK的旗下公司，專注尖端導彈研發。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="images/Waith_logo.png" alt="Waith Logo" />
+        <h3>Waith</h3>
+        <p>提供多元電子產品之製造公司。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="150">
+        <img src="images/PLG_logo.png" alt="PLG Logo" />
+        <h3>Pro Level Gaming(PLG)</h3>
+        <p>Waith旗下公司，專門製作電競類電子產品。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/Whitai_logo.png" alt="Whitai Logo" />
+        <h3>Whitai</h3>
+        <p>專注於交通工具製造。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="250">
+        <img src="images/Aureventi_logo.png" alt="Aureventi Logo" />
+        <h3>Aureventi</h3>
+        <p>Whitai旗下公司，專門因應賽事研究賽車之製造公司。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="images/Huangyu_logo.png" alt="Huangyu Logo" />
+        <h3>Huangyu</h3>
+        <p>提供空中載具之製造公司。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="350">
+        <img src="images/Ifter_logo.png" alt="Ifter Logo" />
+        <h3>Ifter</h3>
+        <p>專門建設建築之製造公司。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="images/Proter_logo.png" alt="Proter Logo" />
+        <h3>Proter</h3>
+        <p>專門為特定區域防禦製造防護罩之製造公司。</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="450">
+        <img src="images/MagLevion_logo.png" alt="MagLevion Logo" />
+        <h3>MagLevion</h3>
+        <p>專注於磁懸浮技術與製造磁懸浮交通工具。</p>
+      </div>
+</section>
   </main>
 
   <footer>
     <p>© 2025 白森民主共和國 All rights reserved.</p>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 650,
+      once: true,
+      disable: "mobile",
+      offset: 50
+    });
+
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
 </body>
 </html>
