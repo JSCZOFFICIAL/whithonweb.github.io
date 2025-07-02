@@ -31,6 +31,7 @@
       align-items: center;
       padding: 0 2rem;
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s ease;
       z-index: 9999;
       flex-wrap: wrap;
     }
@@ -64,11 +65,11 @@
     }
     nav a:hover::after,
     nav a.active::after { width: 100%; }
-
     .lang-switch a {
       font-size: 0.9rem;
       color: #ccc;
       margin-left: 1rem;
+      cursor: pointer;
     }
     .lang-switch a:hover { color: #00cfff; }
 
@@ -80,6 +81,12 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.7);
       backdrop-filter: blur(12px);
       padding: 2rem;
+      animation: fadeInMain 1s ease-out;
+    }
+
+    @keyframes fadeInMain {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h2 {
@@ -88,18 +95,16 @@
       text-align: center;
       text-shadow: 0 0 8px #00cfff;
       margin-bottom: 1rem;
+      animation: pulseGlow 2.5s infinite;
     }
 
-    .form-group {
-      margin-bottom: 1.2rem;
+    @keyframes pulseGlow {
+      0%, 100% { text-shadow: 0 0 8px #00cfff; }
+      50% { text-shadow: 0 0 18px #00eaff; }
     }
 
-    label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #00cfff;
-    }
-
+    .form-group { margin-bottom: 1.2rem; }
+    label { display: block; margin-bottom: 0.5rem; color: #00cfff; }
     input, textarea {
       width: 100%;
       padding: 0.7rem;
@@ -110,12 +115,10 @@
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
-
     input:focus, textarea:focus {
       border-color: #00b0e6;
       outline: none;
     }
-
     .btn-submit {
       padding: 0.8rem 2rem;
       background: #00cfff;
@@ -127,36 +130,33 @@
       cursor: pointer;
       transition: background 0.3s ease;
     }
-
-    .btn-submit:hover {
-      background: #00a3cc;
-    }
-
+    .btn-submit:hover { background: #00a3cc; }
     .error {
       color: #ff5c5c;
       font-size: 0.85rem;
       margin-top: 0.2rem;
       display: block;
     }
-
     .form-success {
       color: #66ff99;
       text-align: center;
       margin-top: 1rem;
       display: none;
     }
-
     footer {
       text-align: center;
       padding: 1.5rem 0;
       font-size: 0.85rem;
       color: #888;
     }
-
     @media (max-width: 600px) {
       main { margin: 100px 1rem; padding: 1rem; }
-      header { padding: 0.5rem 1rem; }
-      .logo, nav, .lang-switch { width: 100%; text-align: center; }
+      header { padding: 0.5rem 1rem; height: auto; }
+      .logo, nav, .lang-switch {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
       nav ul { justify-content: center; }
     }
   </style>
@@ -164,16 +164,14 @@
 <body>
   <header id="header">
     <div class="logo"><a href="index.html"><img src="images/coat_of_arms.png" alt="白森國徽" /></a></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">首頁</a></li>
-        <li><a href="country.html">國家介紹</a></li>
-        <li><a href="companies.html">公司介紹</a></li>
-        <li><a href="products.html">產品介紹</a></li>
-        <li><a href="contact.html" class="active">聯絡我們</a></li>
-        <li><a href="links.html">官方連結</a></li>
-      </ul>
-    </nav>
+    <nav><ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="country.html">國家介紹</a></li>
+      <li><a href="companies.html">公司介紹</a></li>
+      <li><a href="products.html">產品介紹</a></li>
+      <li><a href="contact.html" class="active">聯絡我們</a></li>
+      <li><a href="links.html">官方連結</a></li>
+    </ul></nav>
     <div class="lang-switch">
       <a href="en/contact.html">English</a>｜<a href="contact.html">繁中</a>
     </div>
@@ -209,8 +207,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 650, once: true, disable: "mobile", offset: 50 });
-
+    AOS.init({ duration: 800, once: true, offset: 50 });
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 20);
@@ -221,12 +218,9 @@
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
       const name = form.name.value.trim();
       const email = form.email.value.trim();
       const message = form.message.value.trim();
-
-      let isValid = true;
 
       const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
@@ -234,8 +228,7 @@
       document.getElementById('error-email').textContent = email && emailRegex.test(email) ? "" : "請輸入正確的電子郵件";
       document.getElementById('error-message').textContent = message ? "" : "請輸入訊息內容";
 
-      isValid = name && emailRegex.test(email) && message;
-
+      const isValid = name && emailRegex.test(email) && message;
       if (isValid) {
         successMsg.style.display = 'block';
         setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
