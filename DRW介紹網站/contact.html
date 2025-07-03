@@ -19,7 +19,6 @@
     }
     a { color: #00cfff; text-decoration: none; transition: color 0.3s ease; }
     a:hover { color: #00b0e6; }
-
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -72,7 +71,6 @@
       cursor: pointer;
     }
     .lang-switch a:hover { color: #00cfff; }
-
     main {
       max-width: 700px;
       margin: 100px auto 40px;
@@ -83,12 +81,10 @@
       padding: 2rem;
       animation: fadeInMain 1s ease-out;
     }
-
     @keyframes fadeInMain {
       from { opacity: 0; transform: translateY(50px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     h2 {
       font-size: 2.4rem;
       color: #00cfff;
@@ -97,12 +93,10 @@
       margin-bottom: 1rem;
       animation: pulseGlow 2.5s infinite;
     }
-
     @keyframes pulseGlow {
       0%, 100% { text-shadow: 0 0 8px #00cfff; }
       50% { text-shadow: 0 0 18px #00eaff; }
     }
-
     .form-group { margin-bottom: 1.2rem; }
     label { display: block; margin-bottom: 0.5rem; color: #00cfff; }
     input, textarea {
@@ -179,7 +173,7 @@
 
   <main data-aos="fade-up">
     <h2>聯絡我們</h2>
-    <h2>(擺飾用，無效果)</h2>
+    <h2>(註:上傳信件需些時間，請勿重複點選"送出"，謝謝配合)</h2>
     <form id="contactForm" novalidate>
       <div class="form-group">
         <label for="name">姓名<span class="required">*</span></label>
@@ -221,7 +215,6 @@
       const name = form.name.value.trim();
       const email = form.email.value.trim();
       const message = form.message.value.trim();
-
       const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
       document.getElementById('error-name').textContent = name ? "" : "請輸入姓名";
@@ -229,11 +222,29 @@
       document.getElementById('error-message').textContent = message ? "" : "請輸入訊息內容";
 
       const isValid = name && emailRegex.test(email) && message;
-      if (isValid) {
-        successMsg.style.display = 'block';
-        setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
-        form.reset();
-      }
+      if (!isValid) return;
+
+      // 請替換為你的 Google Apps Script Web App URL
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwwja5fVEQMGBF01Z7ap163vVqR_2KT0E1IbZ1DMXvRB_mOCwhf4Upyt9TonMeeffzr/exec";
+
+      fetch(scriptURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ name, email, message })
+      })
+      .then(response => {
+        if (response.ok) {
+          successMsg.style.display = 'block';
+          setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+          form.reset();
+        } else {
+          alert("表單送出失敗，請稍後再試！");
+        }
+      })
+      .catch(error => {
+        console.error("錯誤：", error);
+        alert("網路錯誤或伺服器無法回應，請稍後再試！");
+      });
     });
   </script>
 </body>
