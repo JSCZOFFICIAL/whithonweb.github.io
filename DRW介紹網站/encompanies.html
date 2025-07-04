@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Company Introduction｜Democratic Republic of Whithon</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- AOS 動畫 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(135deg, #1b1f27, #131313);
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+      font-size: 1em;
+    }
+    a { color: #00cfff; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #00b0e6; }
+
+    /* Header updated style */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s ease;
+      z-index: 9999;
+      flex-wrap: wrap;
+    }
+    header.scrolled { background: rgba(0,0,0,0.85); }
+    .logo img {
+      height: 50px;
+      filter: drop-shadow(0 0 6px rgba(0,196,255,0.9));
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover { transform: scale(1.1); }
+    nav ul {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav a { font-weight: 500; white-space: nowrap; }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: #00cfff;
+      transition: width 0.3s ease;
+      margin-top: 3px;
+    }
+    nav a:hover::after,
+    nav a.active::after { width: 100%; }
+    .lang-switch a {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-left: 1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lang-switch a:hover { color: #00cfff; }
+
+    main.content {
+      max-width: 1100px;
+      margin: 84px auto 40px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+      padding: 2rem;
+    }
+    main.content h1 {
+      font-size: 2.8rem;
+      color: #00cfff;
+      text-align: center;
+      text-shadow: 0 0 8px #00cfff;
+      margin-bottom: 1.5rem;
+    }
+    .company-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .company-card {
+      background: rgba(255,255,255,0.05);
+      padding: 1.5rem 1rem;
+      border-radius: 18px;
+      text-align: center;
+      border: 1px solid #00cfff;
+      box-shadow: 0 0 10px rgba(0,196,255,0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .company-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(ellipse at center, rgba(0,196,255,0.15) 0%, transparent 70%);
+      transform: rotate(25deg);
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+    .company-card:hover::before { opacity: 1; }
+    .company-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 14px 28px rgba(0,196,255,0.5);
+      background: rgba(255,255,255,0.08);
+    }
+    .company-card img {
+      max-width: 100px;
+      height: auto;
+      margin-bottom: 0.8rem;
+      filter: drop-shadow(0 0 6px #00cfff);
+      transition: transform 0.3s ease;
+    }
+    .company-card:hover img { transform: scale(1.15) rotate(3deg); }
+    .company-card h3 {
+      font-size: 1.2rem;
+      color: #00cfff;
+      margin-bottom: 0.5rem;
+    }
+    .company-card p { font-size: 0.95rem; color: #ddd; }
+
+    footer { text-align: center; padding: 1.5rem 0; font-size: 0.85rem; color: #888; }
+
+    @media (max-width: 768px) {
+      main.content { margin: 84px 1rem 40px; padding: 1rem; }
+      main.content h1 { font-size: 1.8rem; text-shadow: none; }
+    }
+    @media (max-width: 600px) {
+      header { height: auto; padding: 0.5rem 1rem; }
+      .logo, nav, .lang-switch { width: 100%; text-align: center; }
+      nav ul { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo"><a href="enindex.html"><img src="images/coat_of_arms.png" alt="白森國徽" /></a></div>
+    <nav><ul>
+      <li><a href="enindex.html">Front Page</a></li>
+      <li><a href="encountry.html">Country Introduction</a></li>
+      <li><a href="encompanies.html" class="active">Company Introduction</a></li>
+      <li><a href="enproducts.html">Product Introduction</a></li>
+      <li><a href="encontact.html">Contact Us</a></li>
+      <li><a href="enlinks.html">Official Link</a></li>
+    </ul></nav>
+    <div class="lang-switch">
+      <a href="encompanies.html">English</a>｜<a href="companies.html">繁中</a>
+    </div>
+  </header>
+
+  <main class="content" data-aos="fade-up">
+    <h1 data-aos="zoom-in">Our Core Businesses</h1>
+    <section class="company-list">
+      <div class="company-card" data-aos="fade-up">
+        <img src="images/IMFK_logo.png" alt="IMFK Logo" />
+        <h3>International Military Force Vehicles(IMFK)</h3>
+        <p>Focus on aerospace and advanced military technology research and development.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="50">
+        <img src="images/X_logo.png" alt="X Logo" />
+        <h3>X</h3>
+        <p>A subsidiary of IMFK, it focuses on the development of cutting-edge missiles.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="100">
+        <img src="images/Waith_logo.png" alt="Waith Logo" />
+        <h3>Waith</h3>
+        <p>A manufacturing company that provides a variety of electronic products.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="150">
+        <img src="images/PLG_logo.png" alt="PLG Logo" />
+        <h3>Pro Level Gaming(PLG)</h3>
+        <p>A subsidiary of Waith, specializing in the production of e-sports electronic products.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="200">
+        <img src="images/Whitai_logo.png" alt="Whitai Logo" />
+        <h3>Whitai</h3>
+        <p>Focus on transportation manufacturing.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="250">
+        <img src="images/Aureventi_logo.png" alt="Aureventi Logo" />
+        <h3>Aureventi</h3>
+        <p>A subsidiary of Whitai, a manufacturing company specializing in researching and manufacturing racing cars for competitions.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="images/Huangyu_logo.png" alt="Huangyu Logo" />
+        <h3>Huangyu</h3>
+        <p>A company that manufactures aerial vehicles.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="350">
+        <img src="images/Ifter_logo.png" alt="Ifter Logo" />
+        <h3>Ifter</h3>
+        <p>A manufacturing company specializing in the construction of buildings.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="400">
+        <img src="images/Proter_logo.png" alt="Proter Logo" />
+        <h3>Proter</h3>
+        <p>A manufacturing company that specializes in producing protective shields for the defense of specific areas.</p>
+      </div>
+      <div class="company-card" data-aos="fade-up" data-aos-delay="450">
+        <img src="images/MagLevion_logo.png" alt="MagLevion Logo" />
+        <h3>MagLevion</h3>
+        <p>Focus on magnetic levitation technology and manufacturing of magnetic levitation vehicles.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>© 2025 Democratic Republic of Whithon All rights reserved.</p></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 650, once: true, disable: "mobile", offset: 50 });
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+  </script>
+</body>
+</html>

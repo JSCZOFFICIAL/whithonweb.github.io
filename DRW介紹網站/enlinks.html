@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Official Link｜Democratic Republic of Whithon</title>
+  <link rel="alternate" hreflang="zh-TW" href="links.html" />
+  <link rel="alternate" hreflang="en" href="en/links.html" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: linear-gradient(135deg, #1b1f27, #131313);
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    a { color: #00cfff; text-decoration: none; transition: color 0.3s ease; }
+    a:hover { color: #00b0e6; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 64px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 9999;
+      flex-wrap: wrap;
+      transition: background 0.3s ease;
+    }
+    header.scrolled { background: rgba(0,0,0,0.85); }
+    .logo img {
+      height: 50px;
+      filter: drop-shadow(0 0 6px rgba(0,196,255,0.9));
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover { transform: scale(1.1); }
+    nav ul {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    nav a::after {
+      content: '';
+      display: block;
+      height: 2px;
+      width: 0;
+      background: #00cfff;
+      transition: width 0.3s ease;
+      margin-top: 3px;
+    }
+    nav a:hover::after,
+    nav a.active::after { width: 100%; }
+
+    .lang-switch a {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-left: 1rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .lang-switch a:hover { color: #00cfff; }
+
+    main {
+      max-width: 1000px;
+      margin: 100px auto 40px;
+      padding: 2rem;
+      background: rgba(0,0,0,0.4);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    h2 {
+      font-size: 2.5rem;
+      color: #00cfff;
+      text-align: center;
+      text-shadow: 0 0 8px #00cfff;
+      margin-bottom: 2rem;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .link-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #00cfff;
+      border-radius: 16px;
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      box-shadow: 0 0 10px rgba(0,196,255,0.5);
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .link-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(0,196,255,0.5);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .link-item img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 0.6rem;
+      filter: drop-shadow(0 0 6px #00cfff);
+    }
+
+    .link-item span {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    @media (max-width: 768px) {
+      main { margin: 84px 1rem 40px; padding: 1rem; }
+    }
+
+    /* 新增窄視窗下 header 自適應高度 */
+    @media (max-width: 600px) {
+      header {
+        height: auto;
+        padding: 0.5rem 1rem;
+      }
+      .logo, nav, .lang-switch {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+      nav ul {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="header">
+    <div class="logo"><a href="enindex.html"><img src="images/coat_of_arms.png" alt="白森國徽" /></a></div>
+    <nav><ul>
+      <li><a href="enindex.html">Front Page</a></li>
+      <li><a href="encountry.html">Country Introduction</a></li>
+      <li><a href="encompanies.html">Company Introduction</a></li>
+      <li><a href="enproducts.html">Product Introduction</a></li>
+      <li><a href="encontact.html">Contact Us</a></li>
+      <li><a href="enlinks.html" class="active">Official Link</a></li>
+    </ul></nav>
+    <div class="lang-switch">
+      <a href="enlinks.html">English</a>｜<a href="links.html">繁中</a>
+    </div>
+  </header>
+
+  <main data-aos="fade-up">
+    <h2>Official Link</h2>
+    <div class="links-grid" data-aos="fade-up" data-aos-delay="150">
+      <a href="https://sites.google.com/view/whithon" class="link-item" target="_blank" rel="noopener">
+        <img src="images/coat_of_arms.png" alt="國家網站" />
+        <span>Country Website</span>
+      </a>
+      <a href="https://x.com/JSCZ_DRW_OFC?t=gwhsGk_qGcy6ex3SM-jvKw&s=09" class="link-item" target="_blank" rel="noopener">
+        <img src="images/icon_X.png" alt="X" />
+        <span>X</span>
+      </a>
+      <a href="https://www.instagram.com/jsczwhithonofficial/" class="link-item" target="_blank" rel="noopener">
+        <img src="images/icon_instagram.png" alt="Instagram" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.micropedia.uk/wiki/%E7%99%BD%E6%A3%AE%E6%B0%91%E4%B8%BB%E5%85%B1%E5%92%8C%E5%9C%8B" class="link-item" target="_blank" rel="noopener">
+        <img src="images/icon_micropedia.png" alt="micropedia" />
+        <span>Micropedia</span>
+      </a>
+      <a href="https://www.tiktok.com/@republicofwhithon" class="link-item" target="_blank" rel="noopener">
+        <img src="images/icon_tiktok.png" alt="TikTok" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://discord.gg/mQaHYJPxvG" class="link-item" target="_blank" rel="noopener">
+        <img src="images/icon_discord.png" alt="Discord" />
+        <span>Discord</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Democratic Republic of Whithon All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 650, once: true, offset: 50 });
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  </script>
+</body>
+</html>
